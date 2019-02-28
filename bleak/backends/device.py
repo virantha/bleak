@@ -21,10 +21,11 @@ class BLEDevice(object):
 
     """
 
-    def __init__(self, address, name, details=None):
+    def __init__(self, address, name, details=None, uuids=[]):
         self.address = address
         self.name = name if name else "Unknown"
         self.details = details
+        self.uuids = uuids
 
     def __str__(self):
         return "{0}: {1}".format(self.address, self.name)
