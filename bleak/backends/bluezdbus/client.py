@@ -14,6 +14,7 @@ from txdbus.client import connect as txdbus_connect
 from txdbus.error import RemoteError
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.WARNING)
 
 
 class BleakClientBlueZDBus(BaseBleakClient):
@@ -278,7 +279,7 @@ class BleakClientBlueZDBus(BaseBleakClient):
 
         """
         _wrap = kwargs.get("notification_wrapper", True)
-        char_props = self.characteristics.get(_uuid)
+        char_props = self.characteristics.get(str(_uuid))
         await self._bus.callRemote(
             char_props.get("Path"),
             "StartNotify",
