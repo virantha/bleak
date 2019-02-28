@@ -133,6 +133,9 @@ async def discover(timeout=5.0, loop=None, **kwargs):
     # 'interface': 'org.bluez.Adapter1', 'destination': 'org.bluez',
     # 'signature': '', 'body': (), 'expectReply': True, 'autoStart': True,
     # 'timeout': None, 'returnSignature': ''}
+
+
+
     # Running Discovery loop.
     await bus.callRemote(
         adapter_path,
@@ -153,19 +156,24 @@ async def discover(timeout=5.0, loop=None, **kwargs):
     )
 
     # Reduce output.
-    # out = []
-    # for path, props in devices.items():
-    #    properties = await cli.callRemote(
-    #        path, 'GetAll',
-    #        interface=defs.PROPERTIES_INTERFACE,
-    #        destination=defs.BLUEZ_SERVICE,
-    #        signature='s',
-    #        body=[defs.DEVICE_INTERFACE, ],
-    #        returnSignature='a{sv}').asFuture(loop)
-    #    print(properties)
-    #
     discovered_devices = []
     for path, props in devices.items():
-        name, address, _, path = _device_info(path, props)
-        discovered_devices.append(BLEDevice(address, name, path))
+        properties = await bus.callRemote(
+            path, 'GetAll',
+            interface=defs.PROPERTIES_INTERFACE,
+            destination=defs.BLUEZ_SERVICE,
+            signature='s',
+            body=[defs.DEVICE_INTERFACE, ],
+            returnSignature='a{sv}').asFuture(loop)
+        print(properties)
+        name = properties.get('Name', properties.get('Alias', "Unknown"))
+        uuids = properties.get('UUIDs', [])
+        discovered_devices.append(BLEDevice(properties['Address'], name, path, uuids=uuids))
+    #
+    #
+    #for path, props in devices.items():
+        #logging.debug(path)
+        #logging.debug(props)
+        #name, address, _, path = _device_info(path, props)
+        #discovered_devices.append(BLEDevice(address, name, path))
     return discovered_devices
