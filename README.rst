@@ -27,6 +27,12 @@ bleak
      :alt: Updates
 
 
+** This is a fork of the original Bleak_ library ** by Henrik Blidh, with some modifications
+to support my needs for my BrickNil_ project.  It has been packaged up for distribution with
+that project on PyPI.   All credit to Henrik for his development of this wonderful asyncio package.
+
+.. _Bleak: https://github.com/hbldh/bleak
+
 Bleak is an acronym for Bluetooth Low Energy platform Agnostic Klient.
 
 * Free software: MIT license

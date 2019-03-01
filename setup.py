@@ -12,11 +12,11 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'bleak'
+NAME = 'bricknil-bleak'
 DESCRIPTION = 'Bluetooth Low Energy platform Agnostic Klient'
-URL = 'https://github.com/hbldh/bleak'
-EMAIL = 'henrik.blidh@nedomkull.com'
-AUTHOR = 'Henrik Blidh'
+URL = 'https://github.com/virantha/bleak'
+EMAIL = 'virantha@gmail.com'
+AUTHOR = 'Virantha Ekanayake'
 
 REQUIRED = [
     # Linux reqs
