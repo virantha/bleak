@@ -165,7 +165,7 @@ async def discover(timeout=5.0, loop=None, **kwargs):
             signature='s',
             body=[defs.DEVICE_INTERFACE, ],
             returnSignature='a{sv}').asFuture(loop)
-        print(properties)
+        #print(properties)
         name = properties.get('Name', properties.get('Alias', "Unknown"))
         uuids = properties.get('UUIDs', [])
         discovered_devices.append(BLEDevice(properties['Address'], name, path, uuids=uuids))
