@@ -77,13 +77,13 @@ async def discover(timeout=5.0, loop=None, **kwargs):
             } if msg_path in devices else changed
         else:
             msg_path = message.path
-            logger.info(
+            logger.debug(
                 "{0}, {1} ({2}): {3}".format(
                     message.member, message.interface, message.path, message.body
                 )
             )
 
-        logger.info(
+        logger.debug(
             "{0}, {1} ({2} dBm), Object Path: {3}".format(
                 *_device_info(msg_path, devices.get(msg_path))
             )
@@ -165,10 +165,10 @@ async def discover(timeout=5.0, loop=None, **kwargs):
             signature='s',
             body=[defs.DEVICE_INTERFACE, ],
             returnSignature='a{sv}').asFuture(loop)
-        #print(properties)
         name = properties.get('Name', properties.get('Alias', "Unknown"))
         uuids = properties.get('UUIDs', [])
-        discovered_devices.append(BLEDevice(properties['Address'], name, path, uuids=uuids))
+        manufacturer_data = properties.get('ManufacturerData', {})
+        discovered_devices.append(BLEDevice(properties['Address'], name, path, uuids=uuids, manufacturer_data=manufacturer_data))
     #
     #
     #for path, props in devices.items():

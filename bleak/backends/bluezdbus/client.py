@@ -14,7 +14,6 @@ from txdbus.client import connect as txdbus_connect
 from txdbus.error import RemoteError
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.WARNING)
 
 
 class BleakClientBlueZDBus(BaseBleakClient):
@@ -395,7 +394,7 @@ class BleakClientBlueZDBus(BaseBleakClient):
         """
         if message.body[0] == defs.GATT_CHARACTERISTIC_INTERFACE:
             if message.path in self._notification_callbacks:
-                logger.info(
+                logger.debug(
                     "GATT Char Properties Changed: {0} | {1}".format(
                         message.path, message.body[1:]
                     )
