@@ -31,6 +31,8 @@ bleak
 to support my needs for my BrickNil_ project.  It has been packaged up for distribution with
 that project on PyPI.   All credit to Henrik for his development of this wonderful asyncio package.
 
+Also credit is due to David Lechner for his work on getting Windows 10 support working.
+
 .. _Bleak: https://github.com/hbldh/bleak
 
 Bleak is an acronym for Bluetooth Low Energy platform Agnostic Klient.
