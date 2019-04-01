@@ -34,6 +34,8 @@ that project on PyPI.   All credit to Henrik for his development of this wonderf
 Also credit is due to David Lechner for his work on getting Windows 10 support working.
 
 .. _Bleak: https://github.com/hbldh/bleak
+.. _Bricknil: https://github.com/virantha/bricknil
+
 
 Bleak is an acronym for Bluetooth Low Energy platform Agnostic Klient.
 
