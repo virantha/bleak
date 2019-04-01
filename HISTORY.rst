@@ -2,6 +2,12 @@
 History
 =======
 
+0.3.1 (2019-04-01)
+------------------
+* Win10 support
+* Changes to get more device information
+
+
 0.2.4 (2018-11-30)
 ------------------
 
