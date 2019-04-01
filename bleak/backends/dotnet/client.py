@@ -67,7 +67,7 @@ class BleakClientDotNet(BaseBleakClient):
 
         logger.debug("Connecting to BLE device @ {0}".format(self.address))
         self._requester = await wrap_Task(
-            self._bridge.BluetoothLEDeviceFromIdAsync(self._device_info.Id),
+            self._bridge.BluetoothLEDeviceFromBluetoothAddressAsync(self._device_info.BluetoothAddress),
             loop=self.loop,
         )
 
